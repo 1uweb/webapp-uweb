@@ -1,0 +1,33 @@
+{
+  "name": "uweb",
+  "version": "1.0.0",
+  "description": "Offizielle Webapp",
+  "main": "index.js",
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "jquery": "^3.3.1",
+    "next": "^7.0.2",
+    "next-page-transitions": "^1.0.0-alpha.4",
+    "node-sass": "^4.11.0",
+    "nprogress": "^0.2.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1uweb/webapp-uweb.git"
+  },
+  "author": "Uwe Barthel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1uweb/webapp-uweb/issues"
+  },
+  "homepage": "https://github.com/1uweb/webapp-uweb#readme"
+}
