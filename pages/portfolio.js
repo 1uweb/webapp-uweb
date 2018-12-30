@@ -4,10 +4,13 @@ import css from '../main.sass'
 import Backend from '../comps/head'
 import GlobalNav from '../comps/header';
 
+const RevealScroll = () => ScrollReveal().reveal('.anim');
+
 const Index = () => (
     <div className="page-root">
         <NextHead>
             <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <title>Portfolio | Uwe Barthel</title>
             <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://cdn.uwe-barthel.net/landing/images/favicons/apple-touch-icon-57x57.png" />
             <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://cdn.uwe-barthel.net/landing/images/favicons/apple-touch-icon-114x114.png" />
@@ -29,13 +32,46 @@ const Index = () => (
             <meta name="msapplication-wide310x150logo" content="https://cdn.uwe-barthel.net/landing/images/favicons/mstile-310x150.png" />
             <meta name="msapplication-square310x310logo" content="https://cdn.uwe-barthel.net/landing/images/favicons/mstile-310x310.png" />
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-            <script src="https://api.uwe-barthel.net/cdn/scripts/nav.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.0/dist/scrollreveal.min.js" integrity="sha256-knIjHYN1AFLrQkulibJpReiSxKhUGhIVUhx0GYsIPjM=" crossorigin="anonymous"></script>
             <link href='https://cdn.jsdelivr.net/npm/boxicons@1.8.1/css/boxicons.min.css' rel='stylesheet'></link>
         </NextHead>
         <GlobalNav></GlobalNav>
         <main className="app-root">
-
+            <section className="hero-frontpage">
+                <div className="text-about">
+                    <div className="wrapper">
+                        <h1>Portfolio</h1>
+                        <p>Meine Projekte und Referenzen Sammlung</p>
+                    </div>
+                </div>
+                <span class="bar-wrapper--big"><span class="bar--big-whitespace"><span class="bar--big-line"></span></span></span>
+                <div className="bg-about"></div>
+            </section>
+            <section className="grid big-book">
+                <div className="wrapper">
+                    <Link href="https://ingenieurbuero-barthel.de">
+                        <a target="_blank">
+                            <div className="book anim ib-barthel">
+                                <h1>Ingenieurbüro Barthel</h1>
+                            </div>
+                        </a>
+                    </Link>
+                    <Link href="https://sv-hohenfichte.de">
+                        <a target="_blank">
+                            <div className="book anim sv-h">
+                                <h1>Schützenverein Hohenfichte</h1>
+                            </div>
+                        </a>
+                    </Link>
+                    <Link href="https://l-tec.uwe-barthel.net">
+                        <a target="_blank">
+                            <div className="book anim l-tec">
+                                <h1>L-TEC's Survivel</h1>
+                            </div>
+                        </a>
+                    </Link>
+                </div>
+            </section>
         </main>
     </div>
 )

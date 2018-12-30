@@ -23,6 +23,12 @@ html, body
     transition-timing-function: cubic-bezier(0.69, 0, 0, 1) !important
     animation-timing-function: cubic-bezier(0.69, 0, 0, 1) !important
 
+
+::selection
+    color: #fff
+    background: #141414
+    text-shadow: none
+
 .wrapper
     max-width: 155rem
     margin: 0 auto
@@ -60,6 +66,7 @@ a
 
 a:hover::after 
     transform: scaleX(1)
+    transform-origin: right
 
 a::after 
     content: ""
@@ -69,8 +76,9 @@ a::after
     width: 100%
     height: 2px
     background-color: #ff1a45
-    transition: transform .25s cubic-bezier(0.65, 0.05, 0.36, 1)
+    transition: transform .5s cubic-bezier(0.65, 0.05, 0.36, 1)
     transform: scaleX(0)
+    transform-origin: left
 
 /* Make clicks pass-through */
 #nprogress
@@ -118,70 +126,51 @@ a::after
     opacity: 0
     transition: opacity 750ms  cubic-bezier(.86,0,.07,1)
 
-/* Animation */
+.bar-wrapper--big
+  width: .1rem
+  height: 7.5rem
+  position: absolute
+  left: calc(50% - .2rem)
+  -webkit-transform: translateX(-50%)
+  transform: translateX(-50%)
+  margin-top: 0
+  cursor: pointer
+  bottom: 2.14286rem
+  left: calc(50% - .1rem)
+  z-index: 100
 
-.fadein
-    -webkit-animation: 750ms cubic-bezier(.77,0,.18,1) fadein
-    animation: 750ms cubic-bezier(.77,0,.18,1) fadein
-    -webkit-animation-fill-mode: forwards
-    animation-fill-mode: forwards
-    opacity: 0
-    -webkit-transform: translate(0,-4rem)
-    transform: translate(0,-4rem)
+.bar--big-whitespace
+  margin: 0 auto
+  overflow: hidden
+  z-index: 1
 
-.fadein-image
-    -webkit-animation: 750ms cubic-bezier(.77,0,.18,1) fadein-image
-    animation: 750ms cubic-bezier(.77,0,.18,1) fadein-image
-    -webkit-animation-fill-mode: forwards
-    animation-fill-mode: forwards
-    opacity: 0
-    -webkit-transform: translate(0,4rem)
-    transform: translate(0,4rem)
+.bar--big-line 
+  background-color: #141414
+  left: 0
+  top: 0
+  -webkit-animation: slide-big-down 2s steps(100) infinite
+  animation: slide-big-down 2s steps(100) infinite
 
-@-webkit-keyframes fadein 
-    0%
-        opacity: 0
-        -webkit-transform: translate(0,-2rem)
-        transform: translate(0,-2rem)
-    
-    100%
-        opacity: 1
-        -webkit-transform: translate(0,0)
-        transform: translate(0,0)
-    
+.bar--big-line, .bar--big-whitespace
+  height: 100%
+  width: 100%
+  position: absolute
 
-@keyframes fadein
-    0%
-        opacity: 0
-        -webkit-transform: translate(0,-2rem)
-        transform: translate(0,-2rem)
-    
-    100%
-        opacity: 1
-        -webkit-transform: translate(0,0)
-        transform: translate(0,0)
+@-webkit-keyframes slide-big-down 
+  0%
+    -webkit-transform: translateY(-100%)
+    transform: translateY(-100%)
+  to 
+    -webkit-transform: translateY(100%)
+    transform: translateY(100%)
 
-@-webkit-keyframes fadein-image 
-    0%
-        opacity: 0
-        -webkit-transform: translate(0,2rem)
-        transform: translate(0,2rem)
-    
-    100% 
-        opacity: 1
-        -webkit-transform: translate(0,0)
-        transform: translate(0,0)
-
-@keyframes fadein-image 
-    0%
-        opacity: 0
-        -webkit-transform:translate(0,2rem)
-        transform:translate(0,2rem)
-    
-    100%
-        opacity: 1
-        -webkit-transform:translate(0,0)
-        transform:translate(0,0)
+@keyframes slide-big-down 
+  0%
+    -webkit-transform: translateY(-100%)
+    transform: translateY(-100%)
+  to
+    -webkit-transform: translateY(100%)
+    transform: translateY(100%)
 
 /* Header */
 
@@ -196,7 +185,7 @@ a::after
     font-size: 1.4rem
     -webkit-transition: all .5s cubic-bezier(.65, .05, .36, 1)
     transition: all .5s cubic-bezier(.65, .05, .36, 1)
-    z-index: 1000
+    z-index: 800
     font-weight: 500
 
 .global-nav .logo-uweb 
@@ -235,7 +224,7 @@ a::after
     overflow: hidden
     transition: all .5s cubic-bezier(.65, .05, .36, 1)
 
-#menu-mobile nav
+#menu-mobile .menu
     display: flex
     justify-content: center
     align-items: center
@@ -247,18 +236,18 @@ a::after
     text-transform: uppercase
     font-size: 2.5rem
 
-#menu-mobile nav ul
+#menu-mobile .menu ul
     list-style: none
     padding: 0
     margin: 0
 
-#menu-mobile nav ul li
+#menu-mobile .menu ul li
     margin: .5rem 0
 
-#menu-mobile nav ul li a
+#menu-mobile .menu ul li a
     color: #141414
 
-#menu-mobile nav ul li a::after
+#menu-mobile .menu ul li a::after
     background-color: #141414
 
 .menu-button::after
@@ -314,11 +303,41 @@ a::after
     -webkit-transform: rotate(-45deg) translate(0,0)
     transform: rotate(-45deg) translate(0,0)
 
+.sitemap
+    width: 100%
+    height: 9rem
+    position: absolute
+    display: block
+    bottom: 0
+    padding: 0 2.5rem
+
+.sitemap .copyright
+    float: left
+    font-weight: 700
+
+.sitemap nav
+    float: right
+    display: block
+
+.sitemap nav a
+    color: #141414
+    margin: 0 1rem
+
+.sitemap nav a::after
+    background: #141414
+
 .hero-frontpage
     width: 100%
     height: 100vh
     position: relative
     display: block
+
+.hero-frontpage-recht
+    width: 100%
+    height: auto
+    position: relative
+    display: block
+    padding: 0 0 7.5rem 0
 
 .hero-frontpage .text-front
     width: 100%
@@ -336,7 +355,7 @@ a::after
     padding: 0
 
 .hero-frontpage .text-front p
-    font-size: 1.8rem
+    font-size: 1.5rem
     font-weight: 500
     padding: 0
     margin: .5rem 0
@@ -344,6 +363,157 @@ a::after
 .hero-frontpage .bg-front
     width: 100%
     height: 100%
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), url("https://api.uwe-barthel.net/survial/images/body/small-book/D2_Forsaken_Gamescom_DreamingCity_06.jpg")
-    background-position: center
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 0.25), rgba(20, 20, 20, 0.25)), url("https://api.uwe-barthel.net/cdn/images/heros/3-02.png")
+    background-position: top
+    background-size: cover
+
+.hero-frontpage .text-about
+    width: 100%
+    height: 100%
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    color: #141414
+
+.hero-frontpage .text-recht
+    width: 100%
+    height: 100%
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: left
+    color: #141414
+
+.hero-frontpage .text-about h1
+    font-size: 5rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage .text-about p
+    font-size: 1.5rem
+    font-weight: 500
+    padding: 0
+    margin: .5rem 0
+
+.hero-frontpage .text-recht h1
+    font-size: 5rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage .text-recht h2
+    font-size: 4rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage .text-recht h3
+    font-size: 3rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage .text-recht p
+    font-size: 1.5rem
+    font-weight: 500
+    padding: 0
+    margin: .5rem 0
+
+.hero-frontpage-recht .text-recht h1
+    font-size: 5rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage-recht .text-recht h2
+    font-size: 4rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage-recht .text-recht h3
+    font-size: 3rem
+    margin: 2rem 0
+    padding: 0
+
+.hero-frontpage-recht .text-recht p
+    font-size: 1.5rem
+    font-weight: 500
+    padding: 0
+    margin: .5rem 0
+
+.hero-frontpage-recht .text-recht ul
+    font-size: 1.5rem
+    font-weight: 500
+
+.hero-frontpage .text-about div
+    margin: 0 2.5rem
+
+.hero-frontpage .text-about .logo
+    width: 35rem
+    display: inline-block
+    text-align: center
+    padding: 5rem 0
+
+.hero-frontpage .text-about .buchstaben
+    width: 25rem
+    display: inline-block
+    text-align: center
+    padding: 5rem 0
+
+.hero-frontpage .bg-about
+    width: 100%
+    height: 100%
+    background-image: radial-gradient(circle, #DDD, #DDD 1.5px, #FFF 1.5px, #FFF)
+    background-size: 5rem 5rem
+
+.big-book
+    position: relative
+
+.big-book .book
+    width: 100%
+    height: 50rem
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 2.5rem 0
+    position: relative
+    transition: all .25s cubic-bezier(.65, .05, .36, 1)
+    text-shadow: .25rem .5rem 1rem rgba(0,0,0,.5)
+
+.big-book .book h1
+    color: #fff
+    z-index: 25
+    font-size: 3rem
+
+.big-book .book::before
+    content: ""
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #141414
+    transition: transform .5s cubic-bezier(0.65, 0.05, 0.36, 1)
+    transform: scaleY(0)
+    transform-origin: bottom
+
+.big-book .book:hover::before
+    transform: scaleY(1)
+    transform-origin: top
+
+.big-book .book::after
+    content: none
+
+.book.ib-barthel
+    background: linear-gradient(to bottom, rgba(20, 20, 20, .1), rgba(20, 20, 20, .1)), url("https://api.uwe-barthel.net/cdn/images/body/ib-barthel.png")
+    background-position: top
+    background-size: cover
+
+.book.sv-h
+    background: linear-gradient(to bottom, rgba(20, 20, 20, .1), rgba(20, 20, 20, .1)), url("https://api.uwe-barthel.net/cdn/images/body/sv-hohenfichte.jpg")
+    background-position: top
+    background-size: cover
+
+.book.l-tec
+    background: linear-gradient(to bottom, rgba(20, 20, 20, .1), rgba(20, 20, 20, .1)), url("https://api.uwe-barthel.net/cdn/images/body/survivel.jpg")
+    background-position: top
     background-size: cover

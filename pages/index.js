@@ -3,6 +3,7 @@ import NextHead from 'next/head'
 import css from '../main.sass'
 import Backend from '../comps/head'
 import GlobalNav from '../comps/header';
+import SiteMap from '../comps/footer';
 
 const RevealScroll = () => ScrollReveal().reveal('.anim');
 
@@ -11,6 +12,7 @@ const Index = () => (
     <div className="page-root">
         <NextHead>
             <meta charSet="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <title>Uwe Barthel</title>
             <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://cdn.uwe-barthel.net/landing/images/favicons/apple-touch-icon-57x57.png" />
             <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://cdn.uwe-barthel.net/landing/images/favicons/apple-touch-icon-114x114.png" />
@@ -32,7 +34,6 @@ const Index = () => (
             <meta name="msapplication-wide310x150logo" content="https://cdn.uwe-barthel.net/landing/images/favicons/mstile-310x150.png" />
             <meta name="msapplication-square310x310logo" content="https://cdn.uwe-barthel.net/landing/images/favicons/mstile-310x310.png" />
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-            <script src="https://api.uwe-barthel.net/cdn/scripts/nav.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.0/dist/scrollreveal.min.js" integrity="sha256-knIjHYN1AFLrQkulibJpReiSxKhUGhIVUhx0GYsIPjM=" crossorigin="anonymous"></script>
             <link href='https://cdn.jsdelivr.net/npm/boxicons@1.8.1/css/boxicons.min.css' rel='stylesheet'></link>
         </NextHead>
