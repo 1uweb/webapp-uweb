@@ -38,8 +38,8 @@ const Index = () => (
             <section className="hero-frontpage">
                 <div className="text-about">
                     <div className="wrapper">
-                        <h1>Zur Meiner Person</h1>
-                        <p>Information & Skills</p>
+                        <h1>Zu meiner Person</h1>
+                        <p>Über mich</p>
                     </div>
                 </div>
                 <span class="bar-wrapper--big"><span class="bar--big-whitespace"><span class="bar--big-line"></span></span></span>
