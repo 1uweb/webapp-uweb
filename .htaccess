@@ -22,5 +22,7 @@ ErrorDocument 404 /404.html
 ErrorDocument 403 /403.html
 
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www\.meine-seite\.de$ [NC]
-RewriteRule ^(.*)$ http://meine-seite.de/$1 [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.uwe-barthel\.net$ [NC]
+
+RewriteRule ^(.*)$ http://uwe-barthel.net/$1 [L,R=301]
