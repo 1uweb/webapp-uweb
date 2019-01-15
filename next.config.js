@@ -1,18 +1,27 @@
 const withSass = require('@zeit/next-sass')
-const isProd = process.env.NODE_ENV === 'production'
+const client = require('./client')
 
 module.exports = withSass(), {
-            // You may only need to add assetPrefix in the production.
-            assetPrefix: isProd ? 'https://cdn.uwe-barthel.net/cdn/' : ''
-        }, {
-            exportPathMap: async function (defaultPathMap) {
-                return {
-                    '/': { page: '/' },
-                    '/ueber': { page: '/ueber' },
-                    '/portfolio': { page: '/portfolio' },
-                    '/impressum': { page: '/impressum' },
-                    '/datenschutz': { page: '/ueber' },
-                    '/404': { page: '/404' }
-                }
-            }
-        }
+    // Make sure that your node enviroment supports async/await
+    exportPathMap: async function (defaultPathMap) {
+
+        const path = await client
+            // get all the posts and return those with slugs
+            .fetch('*[_type == "post"].slug.current')
+            .then(data =>
+                // use reduce to build an object with routes
+                // and select the blog.js file, and send in the
+                // correct query paramater.
+                data.reduce(
+                    (acc, slug) => ({
+                        '/': { page: '/' },
+                        ...acc,
+                        [`/blog/${slug}`]: { page: '/blog', query: { slug } }
+                    }),
+                    {}
+                )
+            )
+            .catch(console.error)
+        return path
+    }
+}
